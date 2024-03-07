@@ -1,5 +1,5 @@
 export async function login({ email, password }) {
-  return await fetch("http://localhost:8080/api/auth/login", {
+  return await fetch("http://api-user66031.se-rmutl.net/api/auth/login", {
     method: "POST",
     body: JSON.stringify({ email, password }),
     headers: { "Content-Type": "application/json" },
@@ -13,12 +13,13 @@ export async function login({ email, password }) {
       return response.json();
     })
     .catch((err) => {
-      console.log(err);
+      console.error("Error during login:", err);
+      // คุณสามารถทำการ handle ข้อผิดพลาดที่นี่ได้ เช่น แสดงข้อความแจ้งเตือนหรือทำการล็อกอินใหม่
     });
 }
 
 export async function searchArtworks({ keyword }) {
-  return await fetch(`http://localhost:8080/api/homepage/getArtworks/${keyword}`, {
+  return await fetch(`http://api-user66031.se-rmutl.net/api/homepage/getArtworks/${keyword}`, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   })
@@ -31,6 +32,7 @@ export async function searchArtworks({ keyword }) {
       return response.json();
     })
     .catch((err) => {
-      console.log(err);
+      console.error("Error during artwork search:", err);
+      // คุณสามารถทำการ handle ข้อผิดพลาดที่นี่ได้ เช่น แสดงข้อความแจ้งเตือนหรือทำการลองค้นหาใหม่
     });
 }
